@@ -1,6 +1,21 @@
 <h1 align="center">✏️ Marker</h1>
 <p align="center">Mark your golang plugin file to get the best of it</p>
 
+<p align="center">
+    <a href="https://travis-ci.org/olehan/marker">
+        <img alt="Marker Travis Status" src="https://img.shields.io/travis/olehan/marker?logo=travis">
+    </a>
+    <a href="https://codecov.io/gh/olehan/marker">
+        <img alt="Marker Code Coverage" src="https://codecov.io/gh/olehan/marker/branch/master/graph/badge.svg">
+    </a>
+    <a href="https://github.com/olehan/marker/blob/master/LICENSE">
+        <img alt="Marker License" src="https://img.shields.io/github/license/olehan/marker.svg">
+    </a>
+    <a href="https://github.com/olehan/marker/releases">
+        <img alt="Marker Last Release" src="https://img.shields.io/github/tag/olehan/marker.svg?label=release">
+    </a>
+</p>
+
 ----
 
 <p align="center">
