@@ -1,6 +1,8 @@
 package output
 
-import "testing"
+import (
+    "testing"
+)
 
 func TestRecoverBadTypeCast(t *testing.T) {
     called := false
@@ -17,4 +19,20 @@ func TestRecoverBadTypeCast(t *testing.T) {
 
     var i Output = 0
     t.Log(i.(string))
+}
+
+func TestRecoverBadTypeCast_OmitNotCastErrors(t *testing.T) {
+    expectedError := "expected_err"
+
+    defer func() {
+        if err := recover(); err != expectedError {
+            t.Error(err)
+        }
+    }()
+
+    defer RecoverBadTypeCast(func(err error) {
+        t.FailNow()
+    })
+
+    panic(expectedError)
 }

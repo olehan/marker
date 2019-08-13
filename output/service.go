@@ -18,11 +18,13 @@ var (
 // RecoverBadTypeCast recovers only bad interface type casts
 // and executes the given callback in that scenario.
 func RecoverBadTypeCast(callback func(err error)) {
-    if err := toError(recover()); err != nil {
-        if strings.Index(err.Error(), typeCastError) > -1 {
+    recoverErr := recover()
+    if recoverErr != nil {
+        err := toError(recoverErr)
+        if err != nil && strings.Index(err.Error(), typeCastError) > -1 {
             callback(err)
         } else {
-            panic(err)
+            panic(recoverErr)
         }
     }
 }

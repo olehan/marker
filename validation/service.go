@@ -26,9 +26,11 @@ func ValidateTwoValues(target reflect.Value, example reflect.Value) error {
     }
     if isV1Ptr {
         target = target.Elem()
+        v1Kind = target.Kind()
     }
     if isV2Ptr {
         example = example.Elem()
+        v2Kind = example.Kind()
     }
 
     switch v1Kind {

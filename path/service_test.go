@@ -21,9 +21,9 @@ func TestRelativeToCaller(t *testing.T) {
 }
 
 func TestRelativeToExecutable(t *testing.T) {
-    t.Log(RelativeToCaller("../README.md"))
+    t.Log(RelativeToExecutable("../README.md"))
 }
 
 func TestRelativeToWorkingDirectory(t *testing.T) {
-    t.Log(RelativeToCaller("../README.md"))
+    t.Log(RelativeToWorkingDirectory("../README.md"))
 }
