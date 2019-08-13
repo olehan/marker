@@ -13,12 +13,13 @@ import (
     "path"
     "plugin"
     "reflect"
+    "strings"
     "time"
 )
 
 const (
     tempFolder = "/tmp"
-    imageNameLen = 10
+    imageNameLen = 20
 )
 
 var (
@@ -93,7 +94,11 @@ func newCleanerFunc(imageFile string) func() {
 }
 
 func newOutputPath() string {
-    return path.Join(tempFolder, utils.RandomStringRunes(imageNameLen))
+    return path.Join(tempFolder, newOutputFileName())
+}
+
+func newOutputFileName() string {
+    return strings.Join([]string{"mo_", utils.RandomStringRunes(imageNameLen)}, "")
 }
 
 func outputFromPlugin(plugin *plugin.Plugin, name string, value reflect.Value) (output.Output, error) {

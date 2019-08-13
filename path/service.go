@@ -12,7 +12,7 @@ func RelativeToCaller(pathToFile string) string {
     if !ok {
         panic("could not get caller information")
     }
-    return path.Join(RemoveFileFromPath(fileName), pathToFile)
+    return path.Join(RemoveLastNode(fileName), pathToFile)
 }
 
 func RelativeToExecutable(pathToFile string) string {
@@ -31,7 +31,7 @@ func RelativeToWorkingDirectory(pathToFile string) string {
     return path.Join(fileName, pathToFile)
 }
 
-func RemoveFileFromPath(path string) string {
+func RemoveLastNode(path string) string {
     fileName := strings.Split(path, "/")
     return strings.Join(fileName[0:len(fileName) - 1], "/")
 }

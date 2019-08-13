@@ -10,3 +10,12 @@ type (
 func NewOutputs() Outputs {
     return Outputs{}
 }
+
+func (o Outputs) Has(key string) bool {
+    _, ok := o[key]
+    return ok
+}
+
+func (o Outputs) Get(key string) plugin.Symbol {
+    return o[key]
+}
