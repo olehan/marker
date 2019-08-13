@@ -1,0 +1,10 @@
+language: go
+dist: trusty
+go: '1.11'
+
+install: skip
+
+script: make test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
