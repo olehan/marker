@@ -1,7 +1,6 @@
 package output
 
 import (
-    "errors"
     "github.com/olehan/marker/validation"
     "reflect"
     "strings"
@@ -11,9 +10,16 @@ const (
     typeCastError = "interface conversion: output.Output is"
 )
 
-var (
-    emptyErrorValue = reflect.ValueOf(errors.New(""))
-)
+var emptyErrorValue reflect.Value
+
+// Reproducing type cast runtime error.
+func init() {
+    defer func() {
+        emptyErrorValue = reflect.ValueOf(recover().(error))
+    }()
+    var i interface{} = 0
+    i = i.(string)
+}
 
 // RecoverBadTypeCast recovers only bad interface type casts
 // and executes the given callback in that scenario.

@@ -6,7 +6,7 @@ PRE_COMMIT_TEMPLATE_HOOK_PATH = hooks/pre-commit.sh
 .PHONY: bootstrap test
 
 test:
-	go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
+	go test -v -race -coverprofile=coverage.txt -covermode=atomic `go list ./... | grep -v examples`
 
 bootstrap:
 	make check-pre-commit-hook
